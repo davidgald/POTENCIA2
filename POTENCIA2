@@ -1,0 +1,403 @@
+src/App.jsx
+import React, { useState } from "react";
+
+const App = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 text-gray-800">
+      {/* Navbar */}
+      <nav className="bg-white shadow-lg sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-20">
+            <div className="flex items-center">
+              <span className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent">
+                POTENCIA2
+              </span>
+            </div>
+            <div className="hidden md:flex space-x-8">
+              {["Inicio", "Programas", "Recursos", "Testimonios", "Contacto"].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item}`}
+                  className="text-gray-700 hover:text-orange-600 transition duration-300 font-medium"
+                >
+                  {item}
+                </a>
+              ))}
+              <a
+                href="#taller"
+                className="bg-gradient-to-r from-orange-500 to-amber-600 text-white px-6 py-2 rounded-full hover:shadow-lg transform hover:scale-105 transition duration-300 font-semibold"
+              >
+                Taller Gratuito
+              </a>
+            </div>
+            <button
+              onClick={toggleMenu}
+              className="md:hidden text-gray-700 focus:outline-none"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        {/* Mobile Menu */}
+        {menuOpen && (
+          <div className="md:hidden bg-white border-t">
+            <div className="px-4 py-3 space-y-3">
+              {["Inicio", "Programas", "Recursos", "Testimonios", "Contacto"].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item}`}
+                  className="block text-gray-700 hover:text-orange-600"
+                  onClick={toggleMenu}
+                >
+                  {item}
+                </a>
+              ))}
+              <a
+                href="#taller"
+                onClick={toggleMenu}
+                className="block bg-gradient-to-r from-orange-500 to-amber-600 text-white text-center py-2 rounded-full font-semibold"
+              >
+                Taller Gratuito
+              </a>
+            </div>
+          </div>
+        )}
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative py-20 px-6 text-center">
+        <div className="max-w-5xl mx-auto">
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
+            Tu hijo no está perdido.
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-600">
+              Solo necesita que lo veas.
+            </span>
+          </h1>
+          <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
+            Guía a tu familia hacia un crecimiento consciente, libre de pantallas y lleno de propósito. 
+            Que la tecnología sea una herramienta, no una atadura.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-6">
+            <a
+              href="#taller"
+              className="bg-gradient-to-r from-orange-500 to-amber-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-xl transform hover:scale-105 transition duration-300"
+            >
+              Únete al taller gratuito
+            </a>
+            <a
+              href="#programas"
+              className="border-2 border-orange-500 text-orange-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-orange-50 transition duration-300"
+            >
+              Conoce nuestros programas
+            </a>
+          </div>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-amber-100 to-transparent"></div>
+      </section>
+
+      {/* Pilares */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center mb-16 text-gray-800">
+            Nuestro camino de transformación
+          </h2>
+          <div className="grid md:grid-cols-3 gap-10">
+            {[
+              {
+                title: "Padres empoderados",
+                desc: "Herramientas para acompañar con sentido, establecer límites con amor y ser modelo de vida.",
+                icon: "👥",
+              },
+              {
+                title: "Jóvenes conscientes",
+                desc: "Espacios para descubrir quién eres, qué te mueve y para qué estás aquí.",
+                icon: "💡",
+              },
+              {
+                title: "Familias conectadas",
+                desc: "Menos pantallas, más presencia. Ritualizamos la conexión auténtica.",
+                icon: "❤️",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="text-center p-8 rounded-2xl bg-gradient-to-b from-gray-50 to-white shadow-lg hover:shadow-xl transition duration-300"
+              >
+                <div className="text-5xl mb-4">{item.icon}</div>
+                <h3 className="text-2xl font-bold mb-3 text-orange-600">{item.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Video Section */}
+      <section className="py-20 bg-gradient-to-r from-orange-50 to-amber-50">
+        <div className="max-w-4xl mx-auto text-center px-6">
+          <h2 className="text-3xl font-bold mb-6">Mira cómo nació POTENCIA2</h2>
+          <p className="text-xl text-gray-600 mb-10">
+            Todo comenzó con una pregunta: ¿cómo ayudar a los jóvenes a no perderse en el mundo digital?
+          </p>
+          <div className="relative pb-9/16 bg-black rounded-2xl overflow-hidden shadow-2xl">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <button className="bg-white text-black rounded-full p-4 hover:scale-110 transition duration-300 shadow-lg">
+                <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Programas */}
+      <section id="programas" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-4xl font-bold text-center mb-6">Transforma tu familia</h2>
+          <p className="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
+            Desde una experiencia inicial hasta un camino de 10 semanas, tenemos la opción perfecta para tu familia.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-10">
+            {/* Taller */}
+            <div className="bg-gradient-to-b from-orange-50 to-white p-8 rounded-3xl shadow-xl border border-orange-100">
+              <div className="bg-orange-500 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mb-4">
+                1
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Taller: "Encuentro Familiar"</h3>
+              <p className="text-gray-600 mb-4">Experiencia vivencial de 3 horas para padres e hijos.</p>
+              <ul className="space-y-2 text-gray-700 mb-6">
+                <li>✅ Diálogo profundo y escucha activa</li>
+                <li>✅ Mindfulness en binomio</li>
+                <li>✅ Compromiso de conexión semanal</li>
+                <li>✅ Kit de actividades sin pantallas</li>
+              </ul>
+              <p className="text-2xl font-bold text-orange-600 mb-6">GRATIS</p>
+              <a
+                href="#taller"
+                className="block bg-gradient-to-r from-orange-500 to-amber-600 text-white text-center py-3 rounded-full font-semibold hover:shadow-lg"
+              >
+                Reservar plaza
+              </a>
+            </div>
+
+            {/* Programa */}
+            <div className="bg-gradient-to-b from-amber-50 to-white p-8 rounded-3xl shadow-2xl border-4 border-amber-200 relative">
+              <div className="absolute -top-4 left-8 bg-gradient-to-r from-orange-500 to-amber-600 text-white px-4 py-1 rounded-full text-sm font-bold">
+                MÁS POPULAR
+              </div>
+              <div className="bg-amber-500 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mb-4">
+                10
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Programa: "Binomio de Éxito"</h3>
+              <p className="text-gray-600 mb-4">10 semanas de transformación familiar profunda.</p>
+              <ul className="space-y-2 text-gray-700 mb-6">
+                <li>✅ 10 módulos semanales</li>
+                <li>✅ Diario de autodescubrimiento</li>
+                <li>✅ Contrato digital familiar</li>
+                <li>✅ Comunidad de apoyo</li>
+                <li>✅ Ceremonia de cierre</li>
+              </ul>
+              <p className="text-3xl font-bold text-amber-600 mb-6">$297</p>
+              <a
+                href="#contacto"
+                className="block bg-gradient-to-r from-amber-500 to-yellow-500 text-white text-center py-3 rounded-full font-semibold hover:shadow-lg"
+              >
+                Inscribirme ahora
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonios */}
+      <section className="py-20 bg-gradient-to-br from-orange-50 to-amber-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-4xl font-bold text-center mb-16">Lo que dicen nuestras familias</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                name: "María, madre de Diego (15)",
+                text: "Gracias a POTENCIA2, hoy mi hijo y yo hablamos de verdad. No solo vive en su cuarto, ahora vive conmigo.",
+                emoji: "❤️",
+              },
+              {
+                name: "Carlos, padre de Sofía (13)",
+                text: "Antes no sabía cómo acercarme. Hoy tenemos nuestro ritual del domingo: sin pantallas, solo nosotros.",
+                emoji: "🌟",
+              },
+            ].map((test, i) => (
+              <div
+                key={i}
+                className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition duration-300"
+              >
+                <p className="text-xl text-gray-700 mb-6 italic">"{test.text}"</p>
+                <div className="flex items-center">
+                  <span className="text-4xl mr-4">{test.emoji}</span>
+                  <span className="font-semibold text-orange-600">{test.name}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Recursos */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-4xl font-bold text-center mb-6">Recursos gratuitos</h2>
+          <p className="text-xl text-gray-600 text-center mb-16">
+            Descarga herramientas prácticas para empezar hoy mismo
+          </p>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Guía: 30 ideas para conectar sin pantallas",
+                desc: "Actividades simples para fortalecer tu vínculo familiar.",
+              },
+              {
+                title: "Plantilla: Contrato digital familiar",
+                desc: "Co-crea acuerdos claros y respetuosos con tu hijo.",
+              },
+              {
+                title: "Diario de gratitud para adolescentes",
+                desc: "Herramienta para cultivar introspección y bienestar.",
+              },
+            ].map((rec, i) => (
+              <div
+                key={i}
+                className="border-2 border-gray-200 p-6 rounded-2xl hover:border-orange-300 hover:shadow-lg transition duration-300"
+              >
+                <h3 className="text-xl font-bold mb-3 text-orange-600">{rec.title}</h3>
+                <p className="text-gray-600 mb-4">{rec.desc}</p>
+                <button className="text-orange-600 font-semibold hover:underline flex items-center">
+                  Descargar ahora
+                  <svg
+                    className="w-5 h-5 ml-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contacto */}
+      <section id="contacto" className="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-4xl font-bold text-center mb-6">¿Listo para comenzar?</h2>
+          <p className="text-xl text-center mb-12 text-gray-300">
+            Agenda una llamada gratuita de 15 minutos y descubre cómo POTENCIA2 puede transformar tu familia.
+          </p>
+          <div className="grid md:grid-cols-2 gap-12">
+            <div>
+              <h3 className="text-2xl font-bold mb-6">Contáctanos</h3>
+              <div className="space-y-4">
+                <div className="flex items-center">
+                  <svg className="w-6 h-6 mr-3 text-orange-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                  <span>Bogotá, Colombia</span>
+                </div>
+                <div className="flex items-center">
+                  <svg className="w-6 h-6 mr-3 text-orange-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                  <span>hola@potencia2.org</span>
+                </div>
+                <div className="flex items-center">
+                  <svg className="w-6 h-6 mr-3 text-orange-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                  <span>+57 312 345 6789</span>
+                </div>
+              </div>
+            </div>
+            <form className="space-y-6">
+              <div>
+                <label className="block text-sm font-medium mb-2">Nombre</label>
+                <input
+                  type="text"
+                  className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:border-orange-500 focus:outline-none"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-2">Correo</label>
+                <input
+                  type="email"
+                  className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:border-orange-500 focus:outline-none"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-2">Mensaje</label>
+                <textarea
+                  rows="4"
+                  className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:border-orange-500 focus:outline-none"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-orange-500 to-amber-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition duration-300"
+              >
+                Enviar mensaje
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-800 text-gray-400 py-12">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <div className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent mb-4">
+            POTENCIA2
+          </div>
+          <p className="text-lg mb-6">
+            Donde las familias se conectan… para que los jóvenes brillen.
+          </p>
+          <div className="flex justify-center space-x-6 mb-8">
+            {["Instagram", "YouTube", "LinkedIn"].map((red) => (
+              <a key={red} href="#" className="hover:text-orange-400 transition duration-300">
+                {red}
+              </a>
+            ))}
+          </div>
+          <p className="text-sm">
+            © 2025 POTENCIA2. Todos los derechos reservados. 
+            <br />
+            Que la tecnología sea una herramienta, no una atadura.
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default App;
